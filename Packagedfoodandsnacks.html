@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Packaged Food & Snacks</title>
+  <style>
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+    .pro {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      width: 200px;
+    }
+    .pro img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    button{
+      display: inline-block;
+      margin-top: 8px;
+      padding: 5px 10px;
+      background-color: #ff6600;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="pro">
+      <img src="https://m.media-amazon.com/images/I/71DCs2yzAwL._UF1000,1000_QL80_.jpg" alt="Lays Chips">
+      <h2>Lays Chips</h2>
+      <p><b>₹20</b> per pack</p>
+      <button onclick="addToCart('lays',20)">Add To Cart</button>
+      <p>Delivery in 15 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src=" https://5.imimg.com/data5/SELLER/Default/2021/10/FQ/JC/MS/139277716/whatsapp-image-2021-10-05-at-2-56-25-pm-jpeg-500x500.jpeg" alt="Maggi Noodles">
+      <h2>Maggi Noodles</h2>
+      <p><b>₹14</b> per pack</p>
+      <button onclick="addToCart('maggei',15)">Add To Cart</button>
+      <p>Delivery in 15 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src=" https://rukminim2.flixcart.com/image/850/1000/ky1vl3k0/cookie-biscuit/k/g/9/-original-imagadczjysz8bh3.jpeg?q=20&crop=false" alt="Parle-G Biscuits">
+      <h2>Parle-G Biscuits</h2>
+      <p><b>₹10</b> per pack</p>
+      <button onclick="addToCart('parle g',10)">Add To Cart</button>
+      <p>Delivery in 15 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src="https://www.glubery.com/public/uploads/1716961469Kurkure_Snacks,_Solid_Masti_Masti,_68g_Pouch.jpg" alt="Kurkure">
+      <h2>Kurkure Masala Munch</h2>
+      <p><b>₹10</b> per pack</p>
+       <button onclick="addToCart('kurkure',10)">Add To Cart</button>
+      <p>Delivery in 15 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src="https://www.quickpantry.in/cdn/shop/products/cadbury-oreo-creame-biscuit-vanilla-46-3-g-quick-pantry.jpg?v=1710538227" alt="Oreo Cookies">
+      <h2>Oreo Cookies</h2>
+      <p><b>₹30</b> per pack</p>
+     <button onclick="addToCart('oreo',30)">Add To Cart</button>
+      <p>Delivery in 15 mins</p>
+    </div>
+
+  </div>
+   <script>
+  function addToCart(productName, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({ name: productName, price: price });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(productName + " added to cart!");
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cosmetic Products</title>
+  <style>
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+    .pro {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      width: 200px;
+    }
+    .pro img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    a {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 5px 10px;
+      background-color: #40ea08bd;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="pro">
+      <img src=" https://img0.junaroad.com/uiproducts/18052538/pri_175_p-1636384844.jpg" alt="Lipstick">
+      <h2>Matte Lipstick</h2>
+      <p><b>₹299</b> each</p>
+       <button onclick="addToCart('lipistick',299)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src="https://m.media-amazon.com/images/I/718Ksdx1xCL._UF1000,1000_QL80_.jpg " alt="Nail Polish">
+      <h2>Nail Polish Set</h2>
+      <p><b>₹399</b> per set</p>
+      <button onclick="addToCart('nail polish',399)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src=" https://keautybeauty.in/cdn/shop/files/Super_Stay_Foundation_shade_8.3_PDP.jpg?v=1741084381&width=1080" alt="Foundation">
+      <h2>Liquid Foundation</h2>
+      <p><b>₹549</b> per bottle</p>
+         <button onclick="addToCart('fundation',549)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src=" https://media6.ppl-media.com//tr:h-750,w-750,c-at_max,dpr-2,q-40/static/img/product/342954/ay-makeup-brush-set-of-5-and-3-beauty-blender-sponge-puff-colour-may-vary-44_1_display_1722760611_ad33191e.jpg" alt="Makeup Brushes">
+      <h2>Makeup Brush Kit</h2>
+      <p><b>₹699</b> per kit</p>
+         <button onclick="addToCart(' makeupkit  ',699)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src="https://europegirl.com/cdn/shop/files/FullSizeRender.jpg?v=1716721518" alt="Eyeshadow Palette">
+      <h2>Eyeshadow Palette</h2>
+      <p><b>₹499</b> per palette</p>
+        <button onclick="addToCart('palette',499)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+
+  </div>
+   <script>
+  function addToCart(productName, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({ name: productName, price: price });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(productName + " added to cart!");
+  }
+</script>
+</body>
+</html>

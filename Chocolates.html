@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chocolate Store</title>
+  <style>
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+    .pro {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      width: 200px;
+    }
+    .pro img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    a {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 5px 10px;
+      background-color: #8B4513;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="pro">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Dairy_Milk_Chocolate_Bar.jpg" alt="Dairy Milk">
+      <h2>Dairy Milk</h2>
+      <p><b>₹40</b> (30g)</p>
+        <button onclick="addToCart('deary milk',40)">Add To Cart</button>
+      <p>Delivery in 15 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Kit_Kat_Bar.jpg" alt="KitKat">
+      <h2>KitKat</h2>
+      <p><b>₹25</b> (18g)</p>
+        <button onclick="addToCart('kitkat',25)">Add To Cart</button>
+      <p>Delivery in 15 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/5_Star_Chocolate.jpg" alt="5 Star">
+      <h2>5 Star</h2>
+      <p><b>₹30</b> (22g)</p>
+        <button onclick="addToCart('5 star',30)">Add To Cart</button>
+      <p>Delivery in 15 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Ferrero_Rocher.jpg" alt="Ferrero Rocher">
+      <h2>Ferrero Rocher</h2>
+      <p><b>₹100</b> (3 pcs)</p>
+      <button onclick="addToCart('rocher',100)">Add To Cart</button>
+      <p>Delivery in 15 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Milkybar_Nestle.jpg" alt="Milkybar">
+      <h2>Milkybar</h2>
+      <p><b>₹20</b> (12g)</p>
+       <button onclick="addToCart('milky bar',20)">Add To Cart</button>
+      <p>Delivery in 15 mins</p>
+    </div>
+
+  </div>
+   <script>
+  function addToCart(productName, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({ name: productName, price: price });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(productName + " added to cart!");
+  }
+</script>
+</body>
+</html>

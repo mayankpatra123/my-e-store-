@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cereal Store</title>
+  <style>
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+    .pro {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      width: 200px;
+    }
+    .pro img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    button {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 5px 10px;
+      background-color: #ffa000;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .pro img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="pro">
+      <img src="https://m.media-amazon.com/images/I/81SJpjHr-TL.jpg" alt="Corn Flakes">
+      <h2>Kellogg’s Corn Flakes</h2>
+      <p><b>₹170</b> (500g)</p>
+       <button onclick="addToCart('crn flacks',90)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src=" https://m.media-amazon.com/images/I/71d0wtpbxJL.jpg " alt="Oats">
+      <h2>Quaker Oats</h2>
+      <p><b>₹120</b> (1kg)</p>
+       <button onclick="addToCart('orts',90)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src="https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2Farchive%2Fe7d738294a514f37466e05a6b58e403160135057_280edc-crop" alt="Muesli">
+      <h2>Fruit Muesli</h2>
+      <p><b>₹220</b> (500g)</p>
+      <button onclick="addToCart('muesli',90)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src=" https://images.apollo247.in/pub/media/catalog/product/K/E/KEL0010_1_1.jpg" alt="Chocos">
+      <h2>Kellogg’s Chocos</h2>
+      <p><b>₹190</b> (375g)</p>
+      <button onclick="addToCart('chocos',90)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/ucy01cs7j8iyzw7lfpvr" alt="Cornflakes Bowl">
+      <h2>Cornflakes with Milk</h2>
+      <p><b>₹60</b> (Ready to eat)</p>
+       <button onclick="addToCart('cornfalcks',90)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+     <script>
+  function addToCart(productName, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({ name: productName, price: price });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(productName + " added to cart!");
+  }
+</script>
+
+  </div>
+</body>
+</html>

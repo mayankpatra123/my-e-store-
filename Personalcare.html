@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Personal Care Products</title>
+  <style>
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+    .pro {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      width: 200px;
+    }
+    .pro img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    button{
+      display: inline-block;
+      margin-top: 8px;
+      padding: 5px 10px;
+      background-color: #00796B;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .pro img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="pro">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtuj_0Cp2MahgtjyNeP9rkEWZkvDWAbEjAew&s " alt="Shampoo">
+      <h2>Head & Shoulders Shampoo</h2>
+      <p><b>₹180</b> (180ml)</p>
+      <a href="#">Add To Cart</a>
+      <p>Delivery in 15 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src="https://m.media-amazon.com/images/I/51V1zNFpLFL._UF1000,1000_QL80_.jpg" alt="Face Wash">
+      <h2>Himalaya Face Wash</h2>
+      <p><b>₹110</b> (100ml)</p>
+      <button onclick="addToCart('',110)">Add To Cart</button>
+      <p>Delivery in 15 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjSvql9NUWEHqgQnZckZD9m1mccONobTil2g&s " alt="Dove Soap">
+      <h2>Dove Beauty Soap</h2>
+      <p><b>₹60</b> per bar</p>
+       <button onclick="addToCart('',60)">Add To Cart</button>
+      <p>Delivery in 15 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src="https://www.jiomart.com/images/product/original/rvqdot5snj/nivea-fresh-active-deodorant-roll-on-for-men-50ml-pack-of-3-product-images-orvqdot5snj-p598878089-1-202401121841.jpg?im=Resize=(420,420) " alt="Deodorant">
+      <h2>Nivea Deodorant</h2>
+      <p><b>₹199</b> (150ml)</p>
+     <button onclick="addToCart('',199)">Add To Cart</button>
+      <p>Delivery in 15 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src=" https://www.quickpantry.in/cdn/shop/files/Colgate_Strong_Teeth_Toothpaste_300_g_Quick_Pantry.jpg?v=1731146068" alt="Toothpaste">
+      <h2>Colgate Toothpaste</h2>
+      <p><b>₹90</b> (150g)</p>
+       <button onclick="addToCart('',90)">Add To Cart</button>
+      <p>Delivery in 15 mins</p>
+    </div>
+
+  </div>
+   <script>
+  function addToCart(productName, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({ name: productName, price: price });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(productName + " added to cart!");
+  }
+</script>
+</body>
+</html>

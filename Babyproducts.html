@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Baby Products</title>
+  <style>
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+    .pro {
+      border: 1px solid #182fad;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      width: 200px;
+    }
+    .pro img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    button {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 5px 10px;
+      background-color: #ff66b2;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .pro img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="pro">
+      <img src="https://m.media-amazon.com/images/I/510jzT0DiVL._UF1000,1000_QL80_.jpg" alt="Baby Powder">
+      <h2>Baby Powder</h2>
+      <p><b>₹90</b> (100g)</p>
+       <button onclick="addToCart('Baby Lotion',90)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src="https://m.media-amazon.com/images/I/51ffcjn8NlL.jpg" alt="Baby Lotion">
+      <h2>Baby Lotion</h2>
+       <p><b>₹90</b> (100g)</p>
+      <button onclick="addToCart('Baby Lotion',90)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src="https://m.media-amazon.com/images/I/61AnjEied0L._UF1000,1000_QL80_.jpg" alt="Pampers Diapers">
+      <h2>Pampers Diapers</h2>
+      <p><b>₹499</b> (Pack of 20)</p>
+       <button onclick="addToCart('Baby Lotion',90)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src="https://www.vishalmegamart.com/dw/image/v2/BGHT_PRD/on/demandware.static/-/Sites-vmm-fmcg-master-catalog/default/dw0d7637ff/images/large/1311019348.jpg?sw=900&sh=900" alt="Baby Wipes">
+      <h2>Baby Wipes</h2>
+      <p><b>₹120</b> (72 wipes)</p>
+       <button onclick="addToCart('Baby Lotion',90)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src="https://ik.imagekit.io/wlfr/wellness/images/products/206448-1.jpg/tr:w-3840,c-at_max,cm-pad_resize,ar-1210-700,pr-true,f-auto,q-70,l-image,i-Wellness_logo_BDwqbQao9.png,lfo-bottom_right,w-200,h-90,c-at_least,cm-pad_resize,l-end" alt="Baby Oil">
+      <h2>Baby Oil</h2>
+      <p><b>₹130</b> (100ml)</p>
+       <button onclick="addToCart('Baby Lotion',90)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+
+  </div>
+  <script>
+  function addToCart(productName, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({ name: productName, price: price });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(productName + " added to cart!");
+  }
+</script>
+</body>
+</html>

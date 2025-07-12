@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Household Supplies</title>
+  <style>
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+    .pro {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      width: 200px;
+    }
+    .pro img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    button{
+      display: inline-block;
+      margin-top: 8px;
+      padding: 5px 10px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="pro">
+      <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYph7jY0dZjioPyBq8paf0J06wHvvj1tTjEQ&s" alt="Laundry Detergent">
+      <h2>Laundry Detergent</h2>
+      <p><b>₹250</b> per pack</p>
+      <button onclick="addToCart('deterngent',250)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src=" https://m.media-amazon.com/images/I/71uH0oAF2VL.jpg" alt="Toilet Paper">
+      <h2>Toilet Paper</h2>
+      <p><b>₹120</b> per pack</p>
+      <button onclick="addToCart('toiletpeaper',120)">Add To Cart</button>
+      
+      <p>Delivery in 20 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src="  https://img.clevup.in/389981/eco-friendly-broom-jhaadu-stick-1pc-1724781156085_SKU-1903_0.jpg?format=webp" alt="Broom Stick">
+      <h2>Broom Stick</h2>
+      <p><b>₹80</b> each</p>
+      <button onclick="addToCart('broom stick',80)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src=" https://k2pharmacy.ph/cdn/shop/files/JoyDishwashingLiquidKalamansi250mL_1-fotor-20240627165711.jpg?v=1720424559" alt="Dishwashing Liquid">
+      <h2>Dishwashing Liquid</h2>
+      <p><b>₹99</b> per bottle</p>
+       <button onclick="addToCart('liquid ',99)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+
+    <div class="pro">
+      <img src=" https://www.asiantrading.in/media/474/catalog/NO%2041%20PLASTIC%20BUCKET%20SAMRUDHI.jpg" alt="Plastic Bucket">
+      <h2>Plastic Bucket</h2>
+      <p><b>₹150</b> each</p>
+      <button onclick="addToCart('bucket',99)">Add To Cart</button>
+      <p>Delivery in 20 mins</p>
+    </div>
+
+  </div>
+   <script>
+  function addToCart(productName, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({ name: productName, price: price });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(productName + " added to cart!");
+  }
+</script>
+</body>
+</html>
