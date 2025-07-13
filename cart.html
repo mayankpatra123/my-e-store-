@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Cart</title>
+<a href="placeorder.html">Proceed to Place Order</a>
+
+</head>
+<body>
+  <h1>🛒 Your Cart</h1>
+  <ul id="cartItems"></ul>
+  <p id="totalPrice">Total: ₹0</p>
+  <button onclick="clearCart()">Clear Cart</button>
+  <a href="index.html">⬅ Back to Products</a>
+<button onclick="window.location.href='placeorder.html'">Place Order</button>
+  
+
+  <script>
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const list = document.getElementById("cartItems");
+      let total = 0;
+
+      list.innerHTML = "";
+      cart.forEach((item, index) => {
+        total += item.price;
+        const li = document.createElement("li");
+        li.innerHTML = `${item.name} - ₹${item.price} 
+          <button onclick="removeItem(${index})">Remove</button>`;
+        list.appendChild(li);
+      });
+
+      document.getElementById("totalPrice").innerText = "Total: ₹" + total;
+    }
+
+    function removeItem(index) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      loadCart();
+    }
+
+    function clearCart() {
+      localStorage.removeItem("cart");
+      loadCart();
+    }
+
+    loadCart();
+  </script>
+</body>
+</html>
