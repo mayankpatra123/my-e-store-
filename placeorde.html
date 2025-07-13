@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Place Order</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    input, textarea { width: 300px; margin-bottom: 10px; padding: 8px; }
+    button { padding: 10px 15px; background: green; color: white; border: none; }
+    #orderMsg { color: green; margin-top: 15px; }
+  </style>
+</head>
+<body>
+
+  <h2>Place Your Order</h2>
+
+  <p><b>Total Amount:</b> ₹<span id="totalAmount">0</span></p>
+
+  <form id="orderForm">
+    <input type="text" id="name" placeholder="Full Name" required><br>
+     <input type="text" id="name" placeholder="Pin code" required><br>
+    <input type="text" id="phone" placeholder="Phone Number" required><br>
+     <input type="text" id="name" placeholder="Land mark" required><br>
+    <textarea id="address" placeholder="Delivery Address" rows="3" required></textarea><br>
+    <select>
+      <option value="office">office</option>
+      <option value="home">🏠 home</option>
+      </select>
+    <button type="submit">Confirm Order</button>
+  </form>
+
+  <p id="orderMsg"></p>
+
+  <script>
+    // Get cart data from localStorage
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Calculate total
+    let total = cart.reduce((sum, item) => sum + item.price, 0);
+    document.getElementById("totalAmount").textContent = total;
+
+    // Handle order form submission
+    document.getElementById("orderForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const address = document.getElementById("address").value;
+
+      if (name && phone && address) {
+        // Clear cart
+        localStorage.removeItem("cart");
+
+        // Show message
+        document.getElementById("orderMsg").innerText = 
+          `✅ Thank you, ${name}! Your order for ₹${total} will be delivered to "${address}".`;
+        
+        // Clear form
+        this.reset();
+        document.getElementById("totalAmount").textContent = "0";
+      }
+    });
+  </script>
+
+</body>
+</html>
