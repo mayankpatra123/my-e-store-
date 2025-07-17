@@ -3,6 +3,75 @@
 <head>
   <title>Your Cart</title>
 <a href="placeorder.html">Proceed to Place Order</a>
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .cart-container {
+    max-width: 600px;
+    margin: auto;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .total {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 15px;
+    margin-bottom: 25px;
+  }
+
+  button, .link-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  button:hover, .link-btn:hover {
+    background-color: #218838;
+  }
+
+  .link-btn.secondary {
+    background-color: #007bff;
+  }
+
+  .link-btn.secondary:hover {
+    background-color: #0056b3;
+  }
+
+  </style>
 
 </head>
 <body>
@@ -10,7 +79,7 @@
   <ul id="cartItems"></ul>
   <p id="totalPrice">Total: ₹0</p>
   <button onclick="clearCart()">Clear Cart</button>
-  <a href="index.html">⬅ Back to Products</a>
+  <a href="index.html">⬅ Back to Products</a><br><br>
 <button onclick="window.location.href='placeorder.html'">Place Order</button>
   
 
