@@ -3,62 +3,152 @@
 <head>
   <title>Place Order</title>
   <style>
-    body { font-family: Arial; padding: 20px; }
-    input, textarea { width: 300px; margin-bottom: 10px; padding: 8px; }
-    button { padding: 10px 15px; background: green; color: white; border: none; }
-    #orderMsg { color: green; margin-top: 15px; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      background: #fff;
+      padding: 25px 30px;
+      max-width: 700px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2, h3 {
+      text-align: center;
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 25px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #28a745;
+      color: white;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    .success {
+      color: green;
+      text-align: center;
+      font-weight: bold;
+      margin-top: 15px;
+    }
   </style>
 </head>
 <body>
 
-  <h2>Place Your Order</h2>
+<div class="container">
+  <h2>🧾 Order Summary</h2>
 
-  <p><b>Total Amount:</b> ₹<span id="totalAmount">0</span></p>
+  <table id="cartTable">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Price (₹)</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+    <tfoot>
+      <tr>
+        <th>Total</th>
+        <th id="totalPrice">₹0</th>
+      </tr>
+    </tfoot>
+  </table>
 
+  <h3>Enter Delivery Details</h3>
   <form id="orderForm">
-    <input type="text" id="name" placeholder="Full Name" required><br>
-     <input type="text" id="name" placeholder="Pin code" required><br>
-    <input type="text" id="phone" placeholder="Phone Number" required><br>
-     <input type="text" id="name" placeholder="Land mark" required><br>
-    <textarea id="address" placeholder="Delivery Address" rows="3" required></textarea><br>
-    <select>
-      <option value="office">office</option>
-      <option value="home">🏠 home</option>
-      </select>
-    <button type="submit">Confirm Order</button>
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="text" id="phone" placeholder="Phone Number" required>
+    <input type="text" id="pin" placeholder="PIN Code" required>
+    <textarea id="address" placeholder="Full Address" rows="3" required></textarea>
+
+    <select id="addresstype" required>
+      <option value="">Select Address Type</option>
+      <option>Home</option>
+      <option>Office</option>
+    </select>
+
+    <select id="payment" required>
+      <option value="">Select Payment Option</option>
+      <option>Cash on Delivery</option>
+      <option>UPI</option>
+      <option>Credit/Debit Card</option>
+    </select>
+
+    <p><b>Estimated Delivery:</b> Within 30 minutes 🚚</p>
+
+    <button type="submit">Place Order</button>
   </form>
 
-  <p id="orderMsg"></p>
+  <p class="success" id="orderMsg"></p>
+</div>
 
-  <script>
-    // Get cart data from localStorage
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+<script>
+  // Load cart from localStorage
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const tableBody = document.querySelector("#cartTable tbody");
+  const totalPriceEl = document.getElementById("totalPrice");
 
-    // Calculate total
-    let total = cart.reduce((sum, item) => sum + item.price, 0);
-    document.getElementById("totalAmount").textContent = total;
+  let total = 0;
+  cart.forEach(item => {
+    const row = document.createElement("tr");
+    row.innerHTML = `<td>${item.name}</td><td>₹${item.price}</td>`;
+    tableBody.appendChild(row);
+    total += item.price;
+  });
+  totalPriceEl.innerText = `₹${total}`;
 
-    // Handle order form submission
-    document.getElementById("orderForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const name = document.getElementById("name").value;
-      const phone = document.getElementById("phone").value;
-      const address = document.getElementById("address").value;
+  // Handle Order Submit
+  document.getElementById("orderForm").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-      if (name && phone && address) {
-        // Clear cart
-        localStorage.removeItem("cart");
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const pin = document.getElementById("pin").value;
+    const address = document.getElementById("address").value;
+    const addresstype = document.getElementById("addresstype").value;
+    const payment = document.getElementById("payment").value;
 
-        // Show message
-        document.getElementById("orderMsg").innerText = 
-          `✅ Thank you, ${name}! Your order for ₹${total} will be delivered to "${address}".`;
-        
-        // Clear form
-        this.reset();
-        document.getElementById("totalAmount").textContent = "0";
-      }
-    });
-  </script>
+    if (name && phone && pin && address && addresstype && payment) {
+      localStorage.removeItem("cart"); // clear cart
+      this.reset(); // reset form
+      tableBody.innerHTML = "";
+      totalPriceEl.innerText = "₹0";
+
+      document.getElementById("orderMsg").innerText = 
+        `✅ Order placed successfully! Thank you ${name}. We'll deliver to your ${addresstype} address via ${payment}.`;
+    }
+  });
+</script>
 
 </body>
 </html>
